@@ -1,6 +1,6 @@
-class CreateAgendas < ActiveRecord::Migration
+class CreateTaskLists < ActiveRecord::Migration
   def change
-    create_table :agendas do |t|
+    create_table :task_lists do |t|
       t.string :title
       t.text :description
 

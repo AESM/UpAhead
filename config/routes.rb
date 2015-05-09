@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :agendas
+  resources :task_lists
+  root 'task_lists#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

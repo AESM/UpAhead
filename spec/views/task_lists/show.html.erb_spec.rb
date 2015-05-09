@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "agendas/show", type: :view do
+RSpec.describe "task_lists/show", type: :view do
   before(:each) do
-    @agenda = assign(:agenda, Agenda.create!(
+    @task_list = assign(:task_list, TaskList.create!(
       :title => "Title",
       :description => "MyText"
     ))
