@@ -237,14 +237,14 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  better_errors
-  binding_of_caller
+  better_errors (~> 2.1.1)
+  binding_of_caller (~> 0.7.2)
   capybara (~> 2.4.4)
   coffee-rails (~> 4.1.0)
   cucumber-rails
   devise (~> 3.4.1)
-  dotenv-rails
-  factory_girl_rails
+  dotenv-rails (~> 2.0.1)
+  factory_girl_rails (~> 4.5.0)
   faker
   haml
   httparty

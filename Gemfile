@@ -39,13 +39,13 @@ end
 
 group :development, :test do
   ## Makes errors easier to read
-  gem 'better_errors'
+  gem 'better_errors', '~> 2.1.1'
   ## Retrieves binding of a method's caller and bindings further up the stack, evaluating code in that context
-  gem 'binding_of_caller'
+  gem 'binding_of_caller', '~> 0.7.2'
   ## Used to ensure a clean state for testing
  #  gem 'database_cleaner'
   ## Shim to load environment variables from `.env` into `ENV` in development
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '~> 2.0.1'
   ## The RSpec testing framework for Rails 3.x and 4.x
   gem 'rspec-rails', '~> 3.2.1'
   # gem 'selenium-webdriver'
@@ -64,7 +64,7 @@ group :test do
   ## BDD in plain text
   gem 'cucumber-rails', :require => false
   ## Allows quick definition of prototypes for each model and requests for instances with properties that are important to the test at hand
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.5.0'
   ## Use 'shoulda' syntax
   gem 'shoulda-matchers', '~> 2.8.0'
 end
