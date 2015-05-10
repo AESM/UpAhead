@@ -2,6 +2,19 @@ require 'rails_helper'
 
 describe "Creating task lists" do
 
+  def createTaskList(options={})
+    options[:title] ||= "A list of the things"
+    options[:description] ||= "A description of said things"
+
+    visit "/task_lists"
+    click_link "New Task list"
+    expect(page).to have_content("New Task List")
+
+    fill_in "Title", with: options[:title]
+    fill_in "Description", with: options[:description]
+    click_button "Create Task list"
+  end
+
   it "successfully redirects to the task list index page" do
     visit "/task_lists"
     click_link "New Task list"
@@ -9,25 +22,14 @@ describe "Creating task lists" do
   end
 
   it "takes a title and description" do
-    visit "/task_lists"
-    click_link "New Task list"
-    fill_in "Title", with: "Food to make my belly happy list"
-    fill_in "Description", with: "Buy some pizza for my belly!"
-    click_button "Create Task list"
-
-    expect(page).to have_content("Food to make my belly happy list")
+    createTaskList
+    expect(page).to have_content(:description)
   end
 
   it "raises an error when no title is included" do
     expect(TaskList.count).to eq(0)
 
-    visit "/task_lists"
-    click_link "New Task list"
-    expect(page).to have_content("New Task List")
-
-    fill_in "Title", with: ""
-    fill_in "Description", with: "All she wants to do is Dance Daaaance!"
-    click_button "Create Task list"
+    createTaskList title: ""
 
     expect(page).to have_content("error")
     expect(TaskList.count).to eq(0)
@@ -39,13 +41,7 @@ describe "Creating task lists" do
   it "raises an error when the title is shorter than three characters" do
     expect(TaskList.count).to eq(0)
 
-    visit "/task_lists"
-    click_link "New Task list"
-    expect(page).to have_content("New Task List")
-
-    fill_in "Title", with: "Bl"
-    fill_in "Description", with: "The wheel in the sky keeps on turnin'!"
-    click_button "Create Task list"
+    createTaskList title: "Bl"
 
     expect(page).to have_content("error")
     expect(TaskList.count).to eq(0)
@@ -57,13 +53,7 @@ describe "Creating task lists" do
   it "raises an error when the title is longer than fifty characters" do
     expect(TaskList.count).to eq(0)
 
-    visit "/task_lists"
-    click_link "New Task list"
-    expect(page).to have_content("New Task List")
-
-    fill_in "Title", with: "12345678901234567890123456789012345678901234567890!"
-    fill_in "Description", with: "The Cheat is Overwhelmed!"
-    click_button "Create Task list"
+    createTaskList title: "12345678901234567890123456789012345678901234567890!"
 
     expect(page).to have_content("error")
     expect(TaskList.count).to eq(0)
@@ -75,13 +65,7 @@ describe "Creating task lists" do
   it "raises an error when no description is included" do
     expect(TaskList.count).to eq(0)
 
-    visit "/task_lists"
-    click_link "New Task list"
-    expect(page).to have_content("New Task List")
-
-    fill_in "Title", with: "There can be, only None!"
-    fill_in "Description", with: ""
-    click_button "Create Task list"
+    createTaskList description: ""
 
     expect(page).to have_content("error")
     expect(TaskList.count).to eq(0)
