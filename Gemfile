@@ -38,6 +38,7 @@ group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'cucumber-rails', :require => false
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 2.8.0'
 end
 
 # Deploying to Heroku
