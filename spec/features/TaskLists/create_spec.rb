@@ -72,4 +72,22 @@ describe "Creating task lists" do
     expect(page).to_not have_content("The Cheat is Overwhelmed!")
   end
 
+  it "raises an error when no description is included" do
+    expect(TaskList.count).to eq(0)
+
+    visit "/task_lists"
+    click_link "New Task list"
+    expect(page).to have_content("New Task List")
+
+    fill_in "Title", with: "There can be, only None!"
+    fill_in "Description", with: ""
+    click_button "Create Task list"
+
+    expect(page).to have_content("error")
+    expect(TaskList.count).to eq(0)
+
+    visit "/task_lists"
+    expect(page).to_not have_content("There can be, only None!")
+  end
+
 end
