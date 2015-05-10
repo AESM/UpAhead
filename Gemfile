@@ -31,7 +31,7 @@ end
 
 group :test do
   gem 'capybara', '~> 2.4.4'
-  # gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', :require => false
   gem 'factory_girl_rails'
 end
 
