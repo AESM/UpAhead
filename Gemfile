@@ -29,8 +29,6 @@ gem 'httparty'
 gem 'devise', '~> 3.4.1'
 ## Provides jQuery UI stylesheets for the Rails asset pipeline in SCSS format
 gem 'jquery-ui-sass-rails'
-## Provides jQuery UI stylesheets for the Rails asset pipeline
-gem 'jquery-ui-rails'
 ## Use Pry as an alternative REPL
 gem 'pry'
 
