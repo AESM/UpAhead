@@ -26,4 +26,16 @@ describe "Viewing list items" do
     expect(page.all("ul.list_items li").size).to eq(0)
   end
 
+  it "displays list items when the task list has content" do
+    task_list.list_items.create(content: "The Sprinkler")
+    task_list.list_items.create(content: "The Bart-Man")
+    task_list.list_items.create(content: "The Pioneer")
+
+    visit_task_list(task_list)
+    expect(page.all("ul.list_items li").size).to eq(3)
+    expect(page).to have_content("The Sprinkler")
+    expect(page).to have_content("The Bart-Man")
+    expect(page).to have_content("The Pioneer")
+  end
+
 end
