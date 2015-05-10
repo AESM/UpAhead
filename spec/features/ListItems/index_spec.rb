@@ -15,6 +15,7 @@ describe "Viewing list items" do
   it "displays the task list title as a main heading" do
 
     visit_task_list(task_list)
+
     within("h1") do
       expect(page).to have_content(task_list.title)
     end
@@ -23,6 +24,7 @@ describe "Viewing list items" do
 
   it "displays no list items when the task list is empty" do
     visit_task_list(task_list)
+
     expect(page.all("ul.list_items li").size).to eq(0)
   end
 
@@ -32,10 +34,15 @@ describe "Viewing list items" do
     task_list.list_items.create(content: "The Pioneer")
 
     visit_task_list(task_list)
+
     expect(page.all("ul.list_items li").size).to eq(3)
-    expect(page).to have_content("The Sprinkler")
-    expect(page).to have_content("The Bart-Man")
-    expect(page).to have_content("The Pioneer")
+
+    within "ul.list_items" do
+      expect(page).to have_content("The Sprinkler")
+      expect(page).to have_content("The Bart-Man")
+      expect(page).to have_content("The Pioneer")
+    end
+
   end
 
 end
