@@ -99,14 +99,14 @@ RSpec.describe TaskListsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        valid_attributes
       }
 
       it "updates the requested task_list" do
         task_list = TaskList.create! valid_attributes
         put :update, {:id => task_list.to_param, :task_list => new_attributes}, valid_session
         task_list.reload
-        skip("Add assertions for updated state")
+        valid_attributes
       end
 
       it "assigns the requested task_list as @task_list" do
