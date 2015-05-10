@@ -71,7 +71,7 @@ end
 
 ## Deploying to Heroku?
 group :production do
-  ## Enables serving assets in production and setting logger to standard out
+  ## Enables serving assets in production and setting logger to standard-out
   gem 'rails_12factor'
   ## A web server that "glues" Mongrel parser, Event Machine, and Rack together
   gem 'thin'
