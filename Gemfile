@@ -22,7 +22,7 @@ end
 
 group :development, :test do
   gem 'better_errors'
-  # gem 'binding_of_caller'
+  gem 'binding_of_caller'
   # gem 'database_cleaner'
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.2.1'
