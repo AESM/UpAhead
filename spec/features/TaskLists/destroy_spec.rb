@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "deleting task lists" do
   let!(:task_list) { TaskList.create(title: "Party!", description: "The list of parties I must attend.") }
 
-  it "successfully destroies the task list" do
+  it "successfully destroys the task list" do
 
     visit "/task_lists"
 

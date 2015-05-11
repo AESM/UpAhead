@@ -33,4 +33,32 @@ describe "Adding list items" do
 
   end
 
+  it "raises an error if no content is submitted" do
+    visit_task_list(task_list)
+    click_link "New List Item"
+
+    fill_in "Content", with: ""
+    click_button "Save"
+
+    within("div.flash") do
+      expect(page).to have_content("The item could not be added.  Sorry.")
+    end
+
+    expect(page).to have_content("Content can't be blank")
+  end
+
+  it "raises an error if there are less than three characters submitted as content" do
+    visit_task_list(task_list)
+    click_link "New List Item"
+
+    fill_in "Content", with: "00"
+    click_button "Save"
+
+    within("div.flash") do
+      expect(page).to have_content("The item could not be added.  Sorry.")
+    end
+
+    expect(page).to have_content("Content is too short")
+  end
+
 end
