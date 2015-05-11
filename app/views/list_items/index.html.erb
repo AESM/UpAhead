@@ -1,0 +1,12 @@
+<h1><%= @task_list.title %></h1>
+
+<ul class="list_items">
+
+  <% @task_list.list_items.each do |item| %>
+    <li><%= item.content %></li>
+  <% end %>
+
+</ul>
+
+<%= link_to "New List Item", new_task_list_list_item_path %> |
+<%= link_to "Back", task_lists_path %>
